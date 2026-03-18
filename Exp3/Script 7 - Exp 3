@@ -1,0 +1,12 @@
+- Receber o valor da velocidade terminal de uma esfera dentro do cilindro, receber a média do raio dessa esfera e receber a viscosidade cinemática
+
+- Calcular o número de Reynolds
+- Mostrar o resultado
+
+function X = CalculaNumerodeReynolds (velocidadeTerminal, medRaio, viscCinematica)
+	
+	Re = (velocidadeTerminal * 2 * medRaio) / viscCinematica;
+	printf("Re = %.2f\n", Re);
+
+	end
+

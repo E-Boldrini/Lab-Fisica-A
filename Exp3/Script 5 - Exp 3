@@ -1,0 +1,59 @@
+- Função 1: recebe a distância percorrida por uma esfera, o tempo médio que ela levou para percorrer essa distância e as incertezas associadas a cada medida. Além disso, recebe a média do raio dessa esfera e a média do diâmetro do cilindro.
+
+- Calcular a velocidade limite no cilindro
+- Calcular o a incerteza da velocidade limite no cilindro
+- Calcular x
+- Calcular f
+- Calcular a velocidade limite no infinito
+- Calcular a incerteza da velocidade limite no infinito
+
+- Função 2: recebe o vetor de resultados e printa os resultados de forma legível na tela
+
+****************************************************
+
+function A  = CalculaQuedaEsfera (distPercorrida, tempoMedio, Idist, Itempo, medRaio, medDiametroCilindro)
+	
+	VelocidadeLimite = distPercorrida/tempoMedio;
+
+	IVelocidadeLimite = VelocidadeLimite*sqrt((Idist/distPercorrida)^2 + (Itempo/tempoMedio)^2);
+	
+	x = (9*medRaio)/(2*medDiametroCilindro);
+	
+	f = (1 + x + x^2);
+
+	VelocidadeLimiteInfinito = f*VelocidadeLimite;
+	
+	IVelocidadeLimiteInfinito = f*IVelocidadeLimite;
+	
+	A = [VelocidadeLimite, IVelocidadeLimite, x, f, VelocidadeLimiteInfinito, IVelocidadeLimiteInfinito];
+	
+	end
+
+function ImprimeResultados(A)
+        printf("%.4f %.4f %.4f %.4f %.4f %.4f\n", A(1), A(2), A(3), A(4), A(5), A(6));
+        end
+
+****************************************************
+
+	
+
+
+
+Estudos relacionados ao caso:
+
+Viscosidade dinâmica/absoluta: n
+
+Viscosidade cinemática: v = n/pflu (densidade do fluido)
+
+Mediremos o coeficiente de viscosidade dinâmica pelo tempo de queda de esferas metálicas nesse fluido
+
+Stokes deduziu que a força de arraste que uma esfera sofre ao se movimentar no interior
+de um fluido real, em regime laminar, podia ser escrita como
+ 𝐹⃗
+𝑣𝑖𝑠𝑐 = −6𝜋n𝑟𝑣⃗ 
+
+Assim, podemos escrever a segunda lei de Newton para essa esfera como
+ 𝜌𝑒𝑠𝑓 𝑉
+𝑑𝑣
+𝑑𝑡
+= 𝜌𝑒𝑠𝑓 𝑉𝑔 − 𝜌𝑓𝑙𝑢𝑉𝑔 − 6𝜋n𝑟v
