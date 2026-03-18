@@ -12,11 +12,14 @@
 % - Retornar valores
 
 function [res] = calcular_tabela_diam(diam1, diam2, diam3, diam4, incerteza_instrumento)
+
   D = [diam1, diam2, diam3, diam4];
+
   diam_medio = mean(D);
   std_diam = std(D);
   std_media_diam = std_diam/2;
   incerteza_comb_diam = sqrt(incerteza_instrumento^2+std_media_diam^2);
+
   raio_medio = diam_medio/2;
   incerteza_comb_raio = incerteza_comb_diam/2;
   raio_quad_medio = raio_medio^2;

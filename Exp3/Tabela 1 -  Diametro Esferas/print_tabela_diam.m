@@ -1,4 +1,5 @@
 
+
 %Função que recebe um vetor com os valores calculados na tabela dos diametros e mostra os resultados na tela
 
 function [] = print_tabela_diam(res)
