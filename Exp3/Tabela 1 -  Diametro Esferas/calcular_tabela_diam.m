@@ -23,7 +23,7 @@ function [res] = calcular_tabela_diam(diam1, diam2, diam3, diam4, incerteza_inst
   raio_medio = diam_medio/2;
   incerteza_comb_raio = incerteza_comb_diam/2;
   raio_quad_medio = raio_medio^2;
-  incerteza_comb_raio_quad = 2*(incerteza_comb_raio/raio_medio)*raio_quad_medio;
+  incerteza_comb_raio_quad = 2*(incerteza_comb_raio)*raio_medio;
 
   %organiza tudo em um vetor de saída
   res = [diam_medio, std_diam, std_media_diam, incerteza_comb_diam, raio_medio, incerteza_comb_raio, raio_quad_medio, incerteza_comb_raio_quad];
