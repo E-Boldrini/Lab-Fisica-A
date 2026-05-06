@@ -40,5 +40,35 @@ for i = 1:length(n)
 end
 fprintf('--------------------------------------------------------------------------------------\n');
 
-% Dica para o Gráfico (Q2):
-% plot(tn, vn, 'o'); xlabel('Tempo (s)'); ylabel('Velocidade (cm/s)');
+
+
+% --- 7. GERAÇÃO DO GRÁFICO E AJUSTE LINEAR ---
+
+% Realiza a regressão linear: v(t) = g*t + v0
+% p(1) será o coeficiente angular (gravidade g)
+% p(2) será o coeficiente linear (velocidade inicial v0)
+p = polyfit(tn, vn, 1);
+v_ajuste = polyval(p, tn); % Calcula os pontos da reta de ajuste
+
+g_cm_s2 = p(1);            % Gravidade em cm/s^2
+g_m_s2 = g_cm_s2 / 100;    % Converte para m/s^2
+v0 = p(2);                 % Velocidade inicial em cm/s
+
+% Criação do Gráfico
+figure; % Abre uma nova janela
+plot(tn, vn, 'ro', 'MarkerSize', 8, 'LineWidth', 2); % Plota os pontos medidos em vermelho
+hold on; % Mantém os pontos no gráfico para plotar a reta por cima
+plot(tn, v_ajuste, 'b-', 'LineWidth', 2); % Plota a reta de ajuste em azul
+
+% Configurações de visualização
+grid on;
+xlabel('Tempo (s)');
+ylabel('Velocidade (cm/s)');
+title('Ajuste Linear: Movimento de Queda Livre');
+legend('Dados Experimentais', sprintf('Ajuste: v = %.2f*t + %.2f', p(1), p(2)));
+
+% Exibe os resultados no console
+fprintf('\n--- RESULTADOS DO AJUSTE LINEAR ---\n');
+fprintf('Aceleração da gravidade (g): %.4f m/s^2\n', g_m_s2);
+fprintf('Velocidade inicial (v0): %.2f cm/s\n', v0);
+fprintf('------------------------------------\n');
